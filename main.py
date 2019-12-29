@@ -7,9 +7,9 @@ def main():
     pygame.init()
     click = 0
     res = (1000, 640)
-    
+    my_font = pygame.freetype.Font(Noto_Sans.ttf, 24)
     screen = pygame.display.set_mode(res)
-
+    yellow = (255,255,0)
     while(True):
         for event in pygame.event.get():
             c_x,c_y = pygame.mouse.get_pos()
@@ -25,6 +25,7 @@ def main():
         pygame.draw.rect(screen, (r,g,b1), (450,390,100,30), 4)
         pygame.draw.rect(screen, (r,g,b1), (450,430,100,30), 4)
         pygame.draw.rect(screen, (r,g,b1), (450,470,100,30), 4)
+        my_font.render_to(screen, (450, 270), "3x4", yellow)
         if(c_x >= 450 and c_x <= 550 ):
             if (c_y >= 270 and c_y <= 300):
                 b1 = 200
