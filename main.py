@@ -25,7 +25,6 @@ def main():
         pygame.draw.rect(screen, (r,g,b1), (450,390,100,30), 4)
         pygame.draw.rect(screen, (r,g,b1), (450,430,100,30), 4)
         pygame.draw.rect(screen, (r,g,b1), (450,470,100,30), 4)
-        my_font.render_to(screen, (450, 270), "3x4", yellow)
         if(c_x >= 450 and c_x <= 550 ):
             if (c_y >= 270 and c_y <= 300):
                 b1 = 200
