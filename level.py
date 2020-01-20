@@ -1,195 +1,200 @@
 import pygame
 import random
+
+
+#Cria uma classe de cartas
 class Carta:
-        def __init__(self,r,g,b,x,y,comprimento,largura):
-            self = r,g,b
-            self =pygame.Rect(x,y,comprimento,largura)
+        def __init__(self,color,square):
+            self.color = color
+            self.square =pygame.Rect(square)
             self.match = False
-            self.picked = False
+            self.picked = 0
+        def show (self):
+            if(self.picked == False):
+                pygame.draw.rect(screen,self.color,self.coordinates, 0)
 
 
 
+#main só para ficar bonito
 def main():
-
+    
+    #todas as cores e variaveis utilizadas
     azul =(0,0,255)
     verde =(0,255,0)
     vermelho =(255,0,0)
     lilas =(177,33,199)
     azul_claro=(0,239,255)
     laranja=(255,145,0)
+    cont= 0
+    penalização = 0
+    score = 0
+
     i= 0
     comp=[]
     #fazer shuffle
     cores = [azul,azul,verde,verde,vermelho,vermelho,lilas,lilas,azul_claro,azul_claro,laranja,laranja]
     random.shuffle(cores)
 
-     #criar criamos as cartas
-    """criamos simplesmente a cor. com isto é só preciso fazer shufle de cores para as posiçoes defenidas"""
-    
-    Cartas = [0,1,2,3,4,5,6,7,8,9,10,11]
-    Cartas[0] = (255,255,0)
-    Cartas[1] = (255,255,0)
-    Cartas[2] = (255,255,0)
-    Cartas[3] = (255,255,0)
-    Cartas[4] = (255,255,0)
-    Cartas[5] = (255,255,0)
-    Cartas[6] = (255,255,0)
-    Cartas[7] = (255,255,0)
-    Cartas[8] = (255,255,0)
-    Cartas[9]=(255,255,0)
-    Cartas[10]= (255,255,0)
-    Cartas[11]= (255,255,0)
-    Posicoes = [0,1,2,3,4,5,6,7,8,9,10,11]
-    Posicoes[0] =pygame.Rect(365,100,70,100)
-    Posicoes[1] =pygame.Rect(365,210,70,100)
-    Posicoes[2] =pygame.Rect(365,320,70,100)
-    Posicoes[3] =pygame.Rect(365,430,70,100)
-    Posicoes[4] =pygame.Rect(465,100,70,100)
-    Posicoes[5] =pygame.Rect(465,210,70,100)
-    Posicoes[6] =pygame.Rect(465,320,70,100)
-    Posicoes[7] =pygame.Rect(465,430,70,100)
-    Posicoes[8] =pygame.Rect(565,100,70,100)
-    Posicoes[9] =pygame.Rect(565,210,70,100)
-    Posicoes[10] =pygame.Rect(565,320,70,100)
-    Posicoes[11] =pygame.Rect(565,430,70,100)
-    
+    #fazemos cartas amarelas    
+    C1 = Carta((255,255,0),(365,100,70,100))
+    C2 = Carta((255,255,0),(365,210,70,100))
+    C3 = Carta((255,255,0),(365,320,70,100))
+    C4 = Carta((255,255,0),(365,430,70,100))
+    C5 = Carta((255,255,0),(465,100,70,100))
+    C6 = Carta((255,255,0),(465,210,70,100))
+    C7 = Carta((255,255,0),(465,320,70,100))
+    C8 = Carta((255,255,0),(465,430,70,100))
+    C9 = Carta((255,255,0),(565,100,70,100))
+    C10= Carta((255,255,0),(565,210,70,100))
+    C11= Carta((255,255,0),(565,320,70,100))
+    C12= Carta((255,255,0),(565,430,70,100))
+    #Se elas já foram "viradas" ou não
+    Cartas = [False,False,False,False,False,False,False,False,False,False,False,False]
     
    
    
-    """ for (i in Cartas)
-        if(Cartas)"""
 
     
     
-    
+    #resolução do ecrã
     res = (1000, 700)
     
     screen = pygame.display.set_mode(res)
 
     while(True):
         for event in pygame.event.get():
-            
+            mb = pygame.mouse.get_pressed()
             
             if(event.type == pygame.QUIT):
                 exit()
 
             pos = pygame.mouse.get_pos()
-            if(len(comp) < 2):
-                if(Posicoes[0].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[0] = cores[0]
-                    comp.append(Cartas[0])
-                    
-                elif (Posicoes[1].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[1] = cores[1]
-                    comp.append(Cartas[1])
-                   
-                    
-                elif(Posicoes[2].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[2] = cores[2]
-                    comp.append(Cartas[2])
-                  
-                    
-                elif(Posicoes[3].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[3] = cores[3]
-                    comp.append(Cartas[3])
-                   
-                
-                    
-                elif(Posicoes[4].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[4] = cores[4]
-                    comp.append(Cartas[4])
-                   
-                     
-                      
-                elif(Posicoes[5].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[5] = cores[5]
-                    comp.append(Cartas[5])
-                   
-                   
-                    
-                elif(Posicoes[6].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[6] = cores[6]
-                    comp.append(Cartas[6])
-                   
-                    
-                    
-                
-                elif(Posicoes[7].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[7] = cores[7]
-                    comp.append(Cartas[7])
-                    
-                   
-                    
-                
-                elif(Posicoes[8].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[8] = cores[8]
-                    comp.append(Cartas[8])
-                 
-                    
-                    
-                
-                elif(Posicoes[9].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[9] = cores[9]
-                    comp.append(Cartas[9])
-                   
-                    
-                
-                elif(Posicoes[10].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[10] = cores[10]
-                    comp.append(Cartas[10])
-                    
-                    
-                    
-                
-                elif(Posicoes[11].collidepoint(pos) and event.type == pygame.MOUSEBUTTONDOWN):
-                    Cartas[11] = cores[11]
-                    comp.append(Cartas[11])
-                    
-                   
-            else:        
-                if(comp[0] == comp[1]):
-                    print("igual")
-                else:
-                    Cartas[0] = (255,255,0)
-                    Cartas[1] = (255,255,0)
-                    Cartas[2] = (255,255,0)
-                    Cartas[3] = (255,255,0)
-                    Cartas[4] = (255,255,0)
-                    Cartas[5] = (255,255,0)
-                    Cartas[6] = (255,255,0)
-                    Cartas[7] = (255,255,0)
-                    Cartas[8] = (255,255,0)
-                    Cartas[9]=(255,255,0)
-                    Cartas[10]= (255,255,0)
-                    Cartas[11]= (255,255,0)
-                    comp.pop(0)
-                    comp.pop(0)
+
+
+            if(cont < 2):
+
+                if(C1.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C1.color = cores[0]
+                    comp.append(C1.color)
+                    Cartas[0] = True
+                    cont += 1
+                elif(C2.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C2.color = cores[1]
+                    comp.append(C2.color)
+                    Cartas[2] = True
+                    cont += 1
+                elif(C3.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C3.color = cores[2]
+                    comp.append( C3.color)
+                    Cartas[2] = True
+                    cont += 1
+                elif(C4.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C4.color = cores[3]
+                    comp.append( C4.color)
+                    Cartas[3] = True
+                    cont += 1
+                elif(C5.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C5.color = cores[4]
+                    comp.append( C5.color)
+                    Cartas[4] = True
+                    cont += 1
+                elif(C6.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C6.color = cores[5]
+                    comp.append( C6.color)
+                    Cartas[5] = True
+                    cont += 1
+                elif(C7.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C7.color = cores[6]
+                    comp.append( C7.color)
+                    Cartas[6] = True
+                    cont += 1
+                elif(C8.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C8.color = cores[7]
+                    comp.append( C7.color)
+                    Cartas[7] = True
+                    cont += 1
+                elif(C9.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C9.color = cores[8]
+                    comp.append( C9.color)
+                    Cartas[8] = True
+                    cont += 1
+                elif(C10.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP): 
+                    C10.color = cores[9]
+                    comp.append(C10.color)
+                    Cartas[9] = True
+                    cont += 1
+                elif(C11.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C11.color = cores[10]
+                    comp.append(C11.color)
+                    Cartas[10] = True
+                    cont += 1
+                elif(C12.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
+                    C12.color = cores[11]
+                    comp.append(C12.color)
+                    Cartas[11] = True
+                    cont += 1
+
+            else :
+                    if (comp[0] == comp[1]):
+                        score += 100
+                        comp.pop(0)
+                        comp.pop(0)
+                        while(i < 2):
+                            for index in Cartas:
+                                if (Cartas[index] == True):
+                                    comp.append (index)
+                                    
+                            i += 1
+                        while (i < 2):
+                            C[comp[i]] =Carta((0,0,20),(920,50,70,100))
+                        
+                        comp.pop(0) 
+                    else:
+                        score -= penalização
+                        penalização -= 20
+                        comp.pop(0)
+                        comp.pop(0)
+                        while(i < 2):
+                            for index in Cartas:
+                                if(Cartas[index] == True):
+                                    comp.append (index)
+                            i += 1
+                        while (i < 2):
+                            C[comp[i]].color = (255,255,0)
+                            Cartas[comp[i]] = False
+                        comp.pop(0)
+                        comp.pop(0)
+
+                        
+
+
  
         screen.fill((0,0,20))
         #Quadrados com as cores trocadas
-        pygame.draw.rect(screen,Cartas[0],(365,100,70,100), 0)
-        pygame.draw.rect(screen,Cartas[1],(365,210,70,100), 0)
-        pygame.draw.rect(screen,Cartas[2],(365,320,70,100), 0)
-        pygame.draw.rect(screen,Cartas[3],(365,430,70,100),0)
-        pygame.draw.rect(screen,Cartas[4],(465,100,70,100), 0)
-        pygame.draw.rect(screen,Cartas[5],(465,210,70,100), 0)
-        pygame.draw.rect(screen,Cartas[6],(465,320,70,100), 0)
-        pygame.draw.rect(screen,Cartas[7], (465,430,70,100), 0)
-        pygame.draw.rect(screen,Cartas[8], (565,100,70,100), 0)
-        pygame.draw.rect(screen,Cartas[9], (565,210,70,100), 0)
-        pygame.draw.rect(screen,Cartas[10], (565,320,70,100), 0)
-        pygame.draw.rect(screen,Cartas[11], (565,430,70,100), 0)
+        
+        pygame.draw.rect(screen,C1.color,(365,100,70,100), 0)
+        pygame.draw.rect(screen,C2.color,(365,210,70,100), 0)
+        pygame.draw.rect(screen,C3.color,(365,320,70,100), 0)
+        pygame.draw.rect(screen,C4.color,(365,430,70,100),0)
+        pygame.draw.rect(screen,C5.color,(465,100,70,100), 0)
+        pygame.draw.rect(screen,C6.color,(465,210,70,100), 0)
+        pygame.draw.rect(screen,C7.color,(465,320,70,100), 0)
+        pygame.draw.rect(screen,C8.color, (465,430,70,100), 0)
+        pygame.draw.rect(screen,C9.color, (565,100,70,100), 0)
+        pygame.draw.rect(screen,C10.color, (565,210,70,100), 0)
+        pygame.draw.rect(screen,C11.color, (565,320,70,100), 0)
+        pygame.draw.rect(screen,C12.color, (565,430,70,100), 0)
         
 
 
 
+ #botao de quit 
 
-        #Quadrados amarelos
        
         
 
 
-        #Quadrados com as cores trocadas
+       
 
 
 

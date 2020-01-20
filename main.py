@@ -9,7 +9,7 @@ def main():
     res = (1000, 640)
     my_font = pygame.freetype.Font("NotoSans-Regular.ttf", 24)
     screen = pygame.display.set_mode(res)
-    yellow = (255,255,0)
+    
     while(True):
         for event in pygame.event.get():
             mb = pygame.mouse.get_pressed()
