@@ -81,7 +81,7 @@ def main():
                 elif(C2.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
                     C2.color = cores[1]
                     comp.append(C2.color)
-                    Cartas[2] = True
+                    Cartas[1] = True
                     cont += 1
                 elif(C3.square.collidepoint(pos) and event.type == pygame.MOUSEBUTTONUP):
                     C3.color = cores[2]
