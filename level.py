@@ -139,12 +139,11 @@ def main():
                         score += 100
                         comp.pop(0)
                         comp.pop(0)
-                        while(i < 2):
-                            for index in Cartas:
-                                if (Cartas[index] == True):
-                                    comp.append (index)
-                                    
-                            i += 1
+                        for index in Cartas:
+                            if (Cartas[index] == True):
+                                comp.append (Cartas[index])
+                                cont = 0    
+
                         while (i < 2):
                             C[comp[i]] =Carta((0,0,20),(920,50,70,100))
                         
